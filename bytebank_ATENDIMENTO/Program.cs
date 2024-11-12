@@ -82,7 +82,7 @@ void TestaMediana(Array array)
 void TestaArrayDeContasCorrentes()
 {
 
-    ListaDeContasCorrentes listaDeContas = new ListaDeContasCorrentes();
+    ListaDeContasCorrentes listaDeContas = new();
     listaDeContas.Adicionar(new ContaCorrente(874, "5679787-A"));
     listaDeContas.Adicionar(new ContaCorrente(874, "4456668-B"));
     listaDeContas.Adicionar(new ContaCorrente(874, "7781438-C"));
@@ -105,7 +105,12 @@ void TestaArrayDeContasCorrentes()
 //TestaArrayDeContasCorrentes();
 #endregion
 
-ArrayList _listaDeContas = new ArrayList();  
+List<ContaCorrente> _listaDeContas = new List<ContaCorrente>()
+{
+    new ContaCorrente(96, "123456-X"){ Saldo =100},
+    new ContaCorrente(95, "951234-y"){ Saldo =700},
+    new ContaCorrente(94, "159753-W"){ Saldo =10},
+};
 void AtendimentoCliente()
 {
     char opcao = '0';
@@ -132,6 +137,18 @@ void AtendimentoCliente()
             case '2':
                ListarContas();
                 break;
+            case '3':
+                RemoverConta();
+                break;                                                                                                                                                                           
+            case '4':
+                OrdenarContas();
+                break;
+            case '5':
+                PesquisarConta();
+                break;
+            case '6':
+                SairDoSistema();
+                break;
             default:
                 Console.WriteLine("Opcao não implementada.");
                 break;
@@ -139,6 +156,25 @@ void AtendimentoCliente()
     }
 }
 
+void SairDoSistema()
+{
+    
+}
+
+void PesquisarConta()
+{
+    
+}
+
+void OrdenarContas()
+{
+    
+}
+
+void RemoverConta()
+{
+
+}
 void ListarContas()
 {
     Console.Clear();
@@ -180,7 +216,7 @@ void CadastrarConta()
     Console.Write("Número da Agência: ");
     int numeroAgencia = int.Parse(Console.ReadLine());
 
-    ContaCorrente conta = new ContaCorrente(numeroAgencia, numeroConta);
+    ContaCorrente conta = new(numeroAgencia, numeroConta);
 
     Console.Write("Informe o saldo inicial: ");
     conta.Saldo = double.Parse(Console.ReadLine());
